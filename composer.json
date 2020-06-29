@@ -1,0 +1,14 @@
+{
+  "name": "ianray/wpheadlesstheme",
+  "homepage": "https://github.com/ianthekid/wpheadlesstheme",
+  "require": {
+    "vlucas/phpdotenv": "^4.1.5",
+    "aws/aws-sdk-php": "^3.144.0"
+  },
+  "authors": [
+    {
+      "name": "Ian Ray",
+      "email": "ian@ianray.com"
+    }
+  ]
+}
