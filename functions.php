@@ -38,8 +38,13 @@ function theme_settings_page() {
         Update Theme
         <span class="status"></status>
       </button>
-      <br/><br/><br/>
-      <button onClick="testScript();">testing</button
+      <code id="update_status"></code>
+      <br/><br/>
+      <button id="headless_req_test">
+        testing
+        <span class="status"></status>
+      </button>
+
       <form method="post" action="options.php">
         <?php
           settings_fields("section");
@@ -63,7 +68,8 @@ function theme_settings_page() {
               'action': action,
               'script': script
             },
-            success:function(data) { 
+            success:function(data) {
+              $('#update_status').html(data);
               console.log(data);
               $(`#${action}`).find('.status').text('')
             },
