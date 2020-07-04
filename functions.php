@@ -27,13 +27,17 @@ function headless_bash() {
     case 'lah':
       $cmd = 'ls -lah';
       break;
+    case 'updateS3':
+      $cmd = '/shared/scripts/test.sh';
+      break;
     default:
       $cmd = 'ls';
       break;
   }
 
   //$bash = shell_exec( dirname(__FILE__)."/scripts/update_theme.sh 2>&1");
-  echo shell_exec('cd '.dirname(__FILE__).' && '.$cmd.' 2>&1');
+  //echo shell_exec('cd '.dirname(__FILE__).' && '.$cmd.' 2>&1');
+  echo shell_exec($cmd.' 2>&1');
   //Always die in functions echoing ajax content
   die();
 }
@@ -52,6 +56,11 @@ function headless_bash_scripts() {
       <br/><br/>
       <button class="headless_action" data-action="lah">
         list all
+        <span class="status"></span>
+      </button>
+      <br/><br/>
+      <button class="headless_action" data-action="updateS3">
+        Update S3
         <span class="status"></span>
       </button>
       <p></p>
@@ -83,7 +92,8 @@ function headless_bash_scripts() {
               'script': script
             },
             success:function(data) {
-              $('#update_status').html(data);
+              var output = data..replace(/\n/g,"<br>");
+              $('#update_status').html(output);
               console.log(data);
               el.find('.status').text('')
             },
